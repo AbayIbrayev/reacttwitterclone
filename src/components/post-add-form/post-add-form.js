@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "reactstrap";
 import "./post-add-form.css";
 
 const PostAddForm = () => {
@@ -9,9 +10,9 @@ const PostAddForm = () => {
         placeholder="What are you thinking about?"
         className="form-control new-post-label"
       />
-      <button type="submit" className="btn btn-outline-secondary">
+      <Button type="submit" outline>
         Add
-      </button>
+      </Button>
     </form>
   );
 };
