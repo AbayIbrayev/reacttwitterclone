@@ -67,7 +67,20 @@ export default class App extends Component {
   }
 
   onToggleImportant(id) {
-    console.log(`Important ${id}`);
+    this.setState(({ data }) => {
+      const index = data.findIndex((elem) => elem.id === id);
+
+      const before = data[index];
+      const newItem = { ...before, important: !before.important };
+      const newArr = [
+        ...data.slice(0, index),
+        newItem,
+        ...data.slice(index + 1),
+      ];
+      return {
+        data: newArr,
+      };
+    });
   }
 
   onToggleLiked(id) {
