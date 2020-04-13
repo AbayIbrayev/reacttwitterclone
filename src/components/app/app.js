@@ -24,7 +24,7 @@ export default class App extends Component {
           id: 2,
         },
         {
-          label: "This is so amazing! 🔥",
+          label: "Click the text to like it! 👈",
           important: false,
           like: false,
           id: 3,
