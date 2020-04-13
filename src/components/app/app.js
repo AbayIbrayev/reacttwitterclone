@@ -11,12 +11,15 @@ export default class App extends Component {
     super(props);
     this.state = {
       data: [
-        { label: "Going to learn React 💖", id: "qwe" },
-        { label: "By making a lot of projects 💻", id: "asd" },
-        { label: "This is so amazing! 🔥", id: "zxc" },
+        { label: "Going to learn React 💖", id: 1 },
+        { label: "By making a lot of projects 💻", id: 2 },
+        { label: "This is so amazing! 🔥", id: 3 },
       ],
     };
     this.deleteItem = this.deleteItem.bind(this);
+    this.addItem = this.addItem.bind(this);
+
+    this.maxId = 4;
   }
 
   deleteItem(id) {
@@ -33,6 +36,19 @@ export default class App extends Component {
     });
   }
 
+  addItem(body) {
+    const newItem = {
+      label: body,
+      id: this.maxId++,
+    };
+    this.setState(({ data }) => {
+      const newArr = [...data, newItem];
+      return {
+        data: newArr,
+      };
+    });
+  }
+
   render() {
     const { data } = this.state;
     return (
@@ -43,7 +59,7 @@ export default class App extends Component {
           <PostStatusFilter />
         </div>
         <PostList posts={data} onDelete={this.deleteItem} />
-        <PostAddForm />
+        <PostAddForm onAdd={this.addItem} />
       </div>
     );
   }
